@@ -1,0 +1,33 @@
+.e
+{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(50px,300px);  
+    grid-gap: 20px;
+    padding: 5px;  
+}
+
+.e1
+{
+    background-color: ivory;
+	box-shadow: 10px 10px 10px lightgrey;
+    border-radius: 20px;
+    padding: 20px 15px ;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+}
+.e1 iframe
+{
+    border-radius: 20px;
+    grid-row: 1;
+    grid-column: 1/5;
+    width: 100%;
+    align-self: top;
+}
+.e1 p
+{
+    grid-column: 1/5;
+    align-self: end;
+    font-size: 20px;
+}

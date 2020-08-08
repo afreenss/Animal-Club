@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="StyleSheet.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link href="https://fonts.googleapis.com/css2?family=Ranchers&family=Rowdies:wght@300&display=swap" rel="stylesheet">
+	<style>
+		ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+li {
+  float: left;
+}
+li a, .dropbtn {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+li a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+li.dropdown {
+  display: inline-block;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+.dropdown-content a:hover {background-color: #f1f1f1;}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+@keyframes t2 {
+	from {top: 60px; background-color: rgb(243, 214, 243);}
+	to {top: 100px;}
+  }
+div.test2
+{
+	left: 50%;
+	width: 200px;
+	height: 200px;
+	background: pink;
+	position: relative;
+	animation-name: t2;
+	animation-duration: 3s;  
+	animation-delay: 2s;
+	animation-iteration-count :infinite;
+	animation-fill-mode: backwards;
+}
+	</style>
+</head>
+<body>
+	<ul>
+		<li><a href="#home">Q & A</a></li>
+		<li class="dropdown">
+		  <a href="" class="dropbtn">ADOPTION</a>
+		  <div class="dropdown-content">
+			<a href="#">LIST FOR ADOPTION</a>
+			<a href="#">ADOPT ! </a>
+		  </div>
+		</li>
+	  </ul>
+	  <div style="animation-name: test; animation-duration: 15s; justify-content: center; text-align: center; height: 30%;">
+		<p style="font-size: 40px;">Welcome to the forum ! </p>
+	  </div>
+	  <img id="imgt" src="images/p3.png">
+	  <i class="material-icons">cloud</i><p style="float: right;">Join thousands of other pet owners and pet lovers on PetForums: a friendly pet community and discussion forum.</p>
+	 <br><br>
+	  <div class="test2"><p>Category 1</p></div>
+	  <br><br><br>
+	  <p style="outline-width: thin; outline-style: solid;outline-color: blueviolet;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae ratione architecto velit perspiciatis voluptatibus illum voluptate omnis laboriosam beatae dolore, ipsum ipsa repellat harum veniam molestias aspernatur inventore officia totam!</p>
+</body>
+</html>
