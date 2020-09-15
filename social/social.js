@@ -25,7 +25,9 @@ function validatecreate() {
             alert("Username must only contain numbers and letters ! ");
             return false;
         }
-        return true;          
+        else{
+            return true;          
+        }
     }
     
 }

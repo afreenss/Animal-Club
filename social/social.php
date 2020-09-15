@@ -10,14 +10,21 @@
     <?php
     include('db.php');
 
-    if (isset($_POST['createaccount'])) {
-
+    if (isset($_POST['createaccount'])) 
+    {
         $user = $_POST['username'];
         $pass = $_POST['password'];
         $e = $_POST['email'];
 
-        DB::query('INSERT INTO Users VALUES (null , :username, :password, :email)', array(':username'=>$user, ':password'=>$pass, ':email'=>$e));
-        echo "Success!";
+        if (!DB::query('SELECT username FROM Users WHERE username = :username', array(':username'=>$user)))
+        {
+            DB::query('INSERT INTO Users VALUES (null , :username, :password, :email)', array(':username'=>$user, ':password'=>$pass, ':email'=>$e));
+            echo "Success!" ;
+        }
+        else
+        {
+            echo "User exists!!!" ;
+        }
     }
     ?>
     <h1>Register</h1>
