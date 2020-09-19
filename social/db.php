@@ -18,9 +18,9 @@
         {
             $statement = self::connect()->prepare($query);
             $statement->execute($para);
-            if (explode(' ', $query)[0] == 'SELECT') 
+            if (explode(' ', $query)[0] == 'SELECT')
             {
-                $data = $statement->fetchAll();
+                $data = $statement-> fetchAll();
                 return $data;
             }
         }

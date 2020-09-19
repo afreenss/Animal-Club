@@ -18,7 +18,7 @@
 
         if (!DB::query('SELECT username FROM Users WHERE username = :username', array(':username'=>$user)))
         {
-            DB::query('INSERT INTO Users VALUES (null , :username, :password, :email)', array(':username'=>$user, ':password'=>$pass, ':email'=>$e));
+            DB::query('INSERT INTO Users VALUES (null , :username, :password, :email)', array(':username'=>$user, ':password'=>password_hash($pass, PASSWORD_BCRYPT), ':email'=>$e));
             echo "Success!" ;
         }
         else
