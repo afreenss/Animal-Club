@@ -24,6 +24,8 @@
                 DB::query('INSERT INTO token VALUES (null, :token, :userid)', array(':token'=>sha1($tokens), ':userid'=>$uid));
                 
                 setcookie("SID", $tokens, time() + 60 * 60 * 24 * 7, '/', NULL, NULL, TRUE);
+                setcookie("SID1", '1', time() + 60 * 60 * 24 * 3, '/', NULL, NULL, TRUE);
+
             }
             else
             {

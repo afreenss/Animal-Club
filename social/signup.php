@@ -17,8 +17,15 @@
 
         if (!DB::query('SELECT username FROM Users WHERE username = :username', array(':username'=>$user)))
         {
-            DB::query('INSERT INTO Users VALUES (null , :username, :password, :email)', array(':username'=>$user, ':password'=>password_hash($pass, PASSWORD_BCRYPT), ':email'=>$e));
-            echo "Success!" ;
+            if (!DB::query('SELECT email FROM Users WHERE email = :email', array(':email'=>$e)))
+            {
+                DB::query('INSERT INTO Users VALUES (null , :username, :password, :email)', array(':username'=>$user, ':password'=>password_hash($pass, PASSWORD_BCRYPT), ':email'=>$e));
+                echo "Success!" ;
+            }
+            else
+            {
+                echo "Email id in use !!!" ;
+            }    
         }
         else
         {
@@ -27,7 +34,7 @@
     }
     ?>
     <h1>Register</h1>
-    <form name="createacc" onsubmit="return validatecreate()" action="social.php" method="post">
+    <form name="createacc" onsubmit="return validatecreate()" action="signup.php" method="post">
         <input type="text" name="username" value="" placeholder="Username ..."><p />
         <input type="password" name="password" value="" placeholder="Password ..."><p />
         <input type="email" name="email" value="" placeholder="someone@somesite.com"><p />
