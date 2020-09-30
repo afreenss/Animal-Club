@@ -7,7 +7,7 @@
 </head>
 <body>
     <?php
-    include('db.php');
+   // include('db.php');
     include('islogged.php');
     if(Login::isloggedin())
     {
