@@ -34,7 +34,7 @@
         }
         else
         {
-            echo "LOL KAHA";
+            echo "nope";
         }
     }
 
