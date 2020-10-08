@@ -10,6 +10,7 @@
     //include('db.php');
     include('islogged.php');
     include('post.php');
+    include('comment.php');
     $timeline = false ;
 
     if(Login::isloggedin())
@@ -28,14 +29,19 @@
     {
         Post::likepost($_GET['postid'], $uid);
     }
+
+    if(isset($_POST['comment']))
+    {
+        Comment::createcomment($_POST['commenttext'], $_GET['postid'], $uid);
+    }
     
 
     $followposts = DB::query('SELECT post.ID, post.text, post.likes, Users.username
     FROM Users, post, followers 
     WHERE post.user_id = followers.user_id 
     AND Users.ID = post.user_id
-    AND followers.follower_id = 28
-    ORDER BY post.likes DESC');
+    AND followers.follower_id = :uid
+    ORDER BY post.likes DESC', array(':uid'=>$uid));
 
     foreach($followposts as $post)
     {
@@ -44,12 +50,14 @@
         <input type= 'submit' name='like' value='Like'>
         <span>".$post['likes']." Like</span>
         </form>
-        <form action = 'index.php' method = 'post'> 
-        <textarea name='commenttext' id='' cols='30' rows='2'></textarea>
+        <form action = 'index.php?postid=".$post['ID']."' method = 'post'> 
+        <textarea name='commenttext' cols='30' rows='2'></textarea>
         <input type='submit' name='comment' value='COMMENT'>
         </form>
-        <hr /> <br />");
+        ");
 
+        Comment::displayComments($post['ID']);
+        echo "<hr /> <br />";
     }
     ?>
 </body>

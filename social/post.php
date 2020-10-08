@@ -17,7 +17,24 @@
             }
             if($loggedinuser == $profileid)
             {
-                DB::query('INSERT INTO post VALUES (null, :posttext, :uid, 0, NOW())', array(':posttext'=>$posttext , ':uid'=>$profileid));
+                DB::query('INSERT INTO post VALUES (null, :posttext, :uid, 0, NOW(), null)', array(':posttext'=>$posttext , ':uid'=>$profileid));
+            }
+            else
+            {
+                die("incorrect page ! ");
+            }
+        }
+        public static function createimgpost($posttext, $loggedinuser, $profileid)
+        {
+            if (strlen($posttext) > 300)
+            {
+              die('Incorrect lenght!');
+            }
+            if($loggedinuser == $profileid)
+            {
+                DB::query('INSERT INTO post VALUES (null, :posttext, :uid, 0, NOW(), null)', array(':posttext'=>$posttext , ':uid'=>$profileid));
+                $postid = DB::query('SELECT ID FROM post WHERE user_id=:uid ORDER BY ID DESC LIMIT 1', array(':uid'=>$loggedinuser))[0]['ID'];
+                return $postid ;
             }
             else
             {
@@ -42,7 +59,7 @@
             $posts ="";
             foreach($allposts as $p) 
             {
-                $posts .= htmlspecialchars($p['text'])."
+                $posts .= "<img src='".$p['postimg']."'>".htmlspecialchars($p['text'])."
                 <form action='profile.php?username=$user&postid=".$p['ID']."' method='post'>
                 <input type= 'submit' name='like' value='Like'>
                 <span>".$p['likes']." Like</span>

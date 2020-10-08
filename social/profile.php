@@ -10,6 +10,8 @@
    // include('db.php');
    include('islogged.php');
    include('post.php');
+   include('image.php');
+
     $user ="";
     $isfollowing = False ;
     /*if(Login::isloggedin())
@@ -56,12 +58,21 @@
                 }
             }
             if (DB::query('SELECT follower_id FROM followers WHERE user_id=:uid AND follower_id=:fid', array(':uid'=>$uid, ':fid'=>$fid))); 
-                {
-                    $isfollowing = True ;
-                }
+            {
+                $isfollowing = True ;
+            }
             if(isset($_POST['post']))
             {
-                Post::createpost($_POST['posttext'], Login::isloggedin(), $uid);
+                if($_FILES['postimg']['size']==0)
+                {
+                    Post::createpost($_POST['posttext'], Login::isloggedin(), $uid);
+                }
+                else
+                {
+                    $postid = Post::createimgpost($_POST['posttext'], Login::isloggedin(), $uid);
+                    Image::upload('postimg','UPDATE post SET postimg=:postimg WHERE ID=:postid', array(':postid'=>$postid));
+
+                }
             }
         }
 
@@ -94,11 +105,14 @@
     }
     ?>
     </form>
-    <form action="profile.php?username=<?php echo $user; ?>" method="post">
-    <textarea name="posttext" id="" cols="30" rows="10"></textarea>
-    <input type="submit" name="post" value="POST">
+
+    <form action="profile.php?username=<?php echo $user; ?>" method="post" enctype="multipart/form-data">
+        <textarea name="posttext" cols="30" rows="10"></textarea>
+        <br>
+        Upload an image:
+        <input type="file" name="postimg">
+        <input type="submit" name="post" value="POST">
     </form>
-    
     <div class="posts">
         <?php echo $posts ;?>
     </div>

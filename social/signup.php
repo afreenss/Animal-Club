@@ -19,7 +19,7 @@
         {
             if (!DB::query('SELECT email FROM Users WHERE email = :email', array(':email'=>$e)))
             {
-                DB::query('INSERT INTO Users VALUES (null , :username, :password, :email)', array(':username'=>$user, ':password'=>password_hash($pass, PASSWORD_BCRYPT), ':email'=>$e));
+                DB::query('INSERT INTO Users VALUES (null , :username, :password, :email, null)', array(':username'=>$user, ':password'=>password_hash($pass, PASSWORD_BCRYPT), ':email'=>$e));
                 echo "Success!" ;
             }
             else
