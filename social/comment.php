@@ -17,7 +17,7 @@
             }
             if(!DB::query('SELECT ID FROM post WHERE ID=:postid', array(':postid'=>$postId)))
             {
-                echo 'invalid post id';
+                echo "<script> alert('Invalid post ID ! ');</script>";
             }
             else
             {

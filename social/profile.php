@@ -13,7 +13,7 @@
    include('image.php');
 
     $user ="";
-    $isfollowing = False ;
+    $isfollowing = false ;
     /*if(Login::isloggedin())
     {
         echo 'logged in';
@@ -41,7 +41,7 @@
                     } 
                     else 
                     {
-                        echo 'Already following!';
+                        echo "<script> alert('Already following ! ');</script>";
                     }
                     $isfollowing = True ;
                 }
@@ -89,12 +89,13 @@
     }
     
     ?>
+
     <h1><?php echo $user;?>'s Profile</h1>
     <form action="profile.php?username=<?php echo $user; ?>" method="post">
     <?php 
     if($uid!=$fid)
     {
-        if($isfollowing)
+        if($isfollowing == true)
         {
             echo '<input type="submit" name="unfollow" value="Unfollow ! ">';
         }
@@ -106,15 +107,24 @@
     ?>
     </form>
 
-    <form action="profile.php?username=<?php echo $user; ?>" method="post" enctype="multipart/form-data">
-        <textarea name="posttext" cols="30" rows="10"></textarea>
-        <br>
-        Upload an image:
-        <input type="file" name="postimg">
-        <input type="submit" name="post" value="POST">
-    </form>
+    <?php
+    if(Login::isloggedin()==$uid)
+    {
+        echo("
+        <form action=profile.php?username=$user method='post' enctype='multipart/form-data'>
+            <textarea name='posttext' cols='30' rows='10'></textarea>
+            <br>
+            Upload an image:
+            <input type='file' name='postimg'>
+            <input type='submit' name='post' value='POST'>
+        </form>
+        ");
+    }
+    ?>
     <div class="posts">
-        <?php echo $posts ;?>
+        <?php 
+        echo $posts ;
+        ?>
     </div>
 </body>
 </html>

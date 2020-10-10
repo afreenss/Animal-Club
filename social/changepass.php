@@ -23,16 +23,16 @@
                 if($newp==$newp1)
                 {
                     DB::query('UPDATE Users SET password=:newpass WHERE id=:userid',array(':newpass'=>password_hash($newp, PASSWORD_BCRYPT), ':userid'=>$uid));
-                    echo 'pass changed successfully' ;
+                    echo "<script> alert('Password changed successfully ! ');</script>";
                 }
                 else
                 {
-                    echo "new passwords dont match each other";
+                    echo "<script> alert('New passwords dont match eachother ! ');</script>";
                 }
             }
             else
             {
-                echo "old pass no match !" ;
+                echo "<script> alert('Incorrect old password ! ');</script>";
             }
 
         }

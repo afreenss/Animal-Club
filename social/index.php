@@ -12,6 +12,7 @@
     include('post.php');
     include('comment.php');
     $timeline = false ;
+    //$uid = Login::isloggedin();
 
     if(Login::isloggedin())
     {
@@ -34,8 +35,42 @@
     {
         Comment::createcomment($_POST['commenttext'], $_GET['postid'], $uid);
     }
-    
 
+    if (isset($_POST['searchbox'])) 
+    {
+        $tosearch = explode(" ", $_POST['searchbox']);
+        if (count($tosearch) == 1) {
+            $tosearch = str_split($tosearch[0], 2);
+        }
+        $whereclause = "";
+        $paramsarray = array(':username'=>'%'.$_POST['searchbox'].'%');
+        for ($i = 0; $i < count($tosearch); $i++) {
+                $whereclause .= " OR username LIKE :u$i ";
+                $paramsarray[":u$i"] = $tosearch[$i];
+        }
+        $users = DB::query('SELECT Users.username FROM Users WHERE Users.username LIKE :username '.$whereclause.'', $paramsarray);
+        print_r($users);
+
+        $whereclause = "";
+        $paramsarray = array(':text'=>'%'.$_POST['searchbox'].'%');
+        for ($i = 0; $i < count($tosearch); $i++) {
+            if ($i % 2) {
+            $whereclause .= " OR text LIKE :p$i ";
+            $paramsarray[":p$i"] = $tosearch[$i];
+            }
+        }
+        $posts = DB::query('SELECT post.text FROM post WHERE post.text LIKE :text '.$whereclause.'', $paramsarray);
+        echo '<pre>';
+        print_r($posts);
+        echo '</pre>';
+    } 
+      
+    ?>
+    <form action="index.php" method="post">
+        <input type="text" name="searchbox" value="">
+        <input type="submit" name="search" value="Search">
+    </form>
+    <?php
     $followposts = DB::query('SELECT post.ID, post.text, post.likes, Users.username
     FROM Users, post, followers 
     WHERE post.user_id = followers.user_id 

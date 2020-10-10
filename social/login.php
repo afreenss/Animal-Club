@@ -8,6 +8,7 @@
 <body>
     <?php
     include('db.php');
+    
     if (isset($_POST['login']))
     {
         $user = $_POST['username'];
@@ -17,7 +18,6 @@
         {
             if(password_verify($pass, DB::query('SELECT password FROM Users WHERE username=:username', array(':username'=>$user))[0]['password']))
             {
-                echo "logged in !!! woop woop";
                 $crypto = True ;
                 $tokens = bin2hex(openssl_random_pseudo_bytes(64, $crypto));
                 $uid = DB::query('SELECT ID FROM Users WHERE username=:username', array(':username'=>$user))[0]['ID'];
@@ -25,16 +25,17 @@
                 
                 setcookie("SID", $tokens, time() + 60 * 60 * 24 * 7, '/', NULL, NULL, TRUE);
                 setcookie("SID1", '1', time() + 60 * 60 * 24 * 3, '/', NULL, NULL, TRUE);
-
+                echo "<script> location.href='http://localhost:8080/Animal-Club/social/profile.php?username=$user'; </script>";
+                exit;
             }
             else
             {
-                echo "incorrect pass !";
+                echo "<script> alert('Incorrect password ! ');</script>";
             }
         }
         else
         {
-            echo "nope";
+            echo "<script> alert('User does not exist ! ');</script>";
         }
     }
 
