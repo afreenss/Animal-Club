@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sesh check</title>
+    <link rel="stylesheet" href="tstyle.css">
+    <title>My Feed - Animal Club</title>
 </head>
 <body>
     <?php
@@ -66,12 +67,19 @@
     } 
       
     ?>
-    <form action="index.php" method="post">
+    <!--<form action="index.php" method="post">
         <input type="text" name="searchbox" value="">
         <input type="submit" name="search" value="Search">
-    </form>
+    </form>-->
+    <div class="navbar">
+    <a href="http://localhost:8080/Animal-Club/social/social.html" class="btn">Go Back</a>
+
+    </div>
+		<img id='stic2' style="position:fixed; left:0; bottom:0px" width="300px" src='images/p5.png' >
+		<img id='stic3' style="position:fixed; right:0; top:10px" width="300px" src='images/giraffe.png'>
+    <h1>MY FEED</h1>
     <?php
-    $followposts = DB::query('SELECT post.ID, post.text, post.likes, Users.username
+    $followposts = DB::query('SELECT post.ID, post.text, post.likes, post.postimg, Users.username
     FROM Users, post, followers 
     WHERE post.user_id = followers.user_id 
     AND Users.ID = post.user_id
@@ -80,19 +88,21 @@
 
     foreach($followposts as $post)
     {
-        echo $post['text']." ~ ".$post['username'];
+        echo "<div class='onepost'>".$post['text']."<br><br> ~ Posted by ".$post['username']."";
         echo("<form action='index.php?postid=".$post['ID']."' method='post'>
+        <img src='".$post['postimg']."'><br>
         <input type= 'submit' name='like' value='Like'>
         <span>".$post['likes']." Like</span>
         </form>
         <form action = 'index.php?postid=".$post['ID']."' method = 'post'> 
         <textarea name='commenttext' cols='30' rows='2'></textarea>
         <input type='submit' name='comment' value='COMMENT'>
+        <hr />
         </form>
+        <h3>Comments</h3>
         ");
-
         Comment::displayComments($post['ID']);
-        echo "<hr /> <br />";
+        echo "<br /></div>";
     }
     ?>
 </body>

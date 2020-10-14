@@ -8,3 +8,5 @@ https://imgur.com/#access_token=03c833a20f530d889f692df92ae74498b63bac99&expires
 
 access_token = 03c833a20f530d889f692df92ae74498b63bac99
 refresh_token = 232791e90b813b5eac6bc447b469ac738dfeec18
+
+http://localhost:8080/Animal-Club/homepage/index.html

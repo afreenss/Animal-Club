@@ -29,46 +29,62 @@
                             {
                                 DB::query('INSERT INTO Users VALUES (null , :username, :password, :email, null)', array(':username'=>$user, ':password'=>password_hash($pass, PASSWORD_BCRYPT), ':email'=>$e));
                                 echo "<script> alert('Account created ! ');</script>";
+                                echo "<script> location.href='http://localhost:8080/Animal-Club/social/login.html'; </script>";
+
                             }
                             else
                             {
                                 echo "<script> alert('This email is already registered with an account ! ');</script>";
+                                echo "<script> location.href='http://localhost:8080/Animal-Club/social/signup.html'; </script>";
+
                             } 
                         }
                         else 
                         {
                             echo "<script> alert('Please enter a valid email ID ! ');</script>";
+                            echo "<script> location.href='http://localhost:8080/Animal-Club/social/signup.html'; </script>";
+
                         }
                     } 
                     else 
                     {
                         echo "<script> alert('Password must be between 6 to 60 charecters ! ');</script>";
+                        echo "<script> location.href='http://localhost:8080/Animal-Club/social/signup.html'; </script>";
+
                     }
                     } 
                 else 
                 {
                     echo "<script> alert('Username must only contain alphanumeric charecters and _ ! ');</script>";
+                    echo "<script> location.href='http://localhost:8080/Animal-Club/social/signup.html'; </script>";
+
                 }
                 } 
             else 
             {
                 echo "<script> alert('Username must be between 3 - 32 charecters ! ');</script>";
+                echo "<script> location.href='http://localhost:8080/Animal-Club/social/signup.html'; </script>";
+
             }
         }    
         else
         {
             echo "<script> alert('Username already taken ! ');</script>";
+            echo "<script> location.href='http://localhost:8080/Animal-Club/social/signup.html'; </script>";
+
         }
     }
     ?>
-    <h1>Register</h1>
+    <!--
+            <h1>Register</h1>
     <form name="createacc" onsubmit="return validatecreate()" action="signup.php" method="post">
         <input type="text" name="username" value="" placeholder="Username"><p />
         <input type="password" name="password" value="" placeholder="Password"><p />
         <input type="email" name="email" value="" placeholder="someone@somesite.com"><p />
         <input type="submit" name="createaccount" value="Create Account">
     </form>
-    <script src="social.js"></script>
+    -->
+
 
 </body>
 </html>

@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="a1style.css">
+    <title>Logout - Animal Club</title>
 </head>
 <body>
     <?php
@@ -33,11 +34,17 @@
     }
 
     ?>
-    <h1>Logout</h1>
+    <div class="container">
+        <div class="class1">
+        <h1>Logout</h1>
     <form action="logout.php" method="POST">
-    <input type="checkbox" name="alldevices" value="alldevices">Logout of all devices 
-    <input type="submit" name="confirm" value="Submit">
+    <input type="checkbox" name="alldevices" value="alldevices">Logout of all devices
+    <input id="submit" type="submit" name="confirm" value="Submit">
     </form>
+    </div>
+    
+    </div>
+
     
 </body>
 </html>

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="tstyle.css">
     <title>Document</title>
 </head>
 <body>
@@ -31,7 +32,7 @@
             $comments = DB::query('SELECT comments.comment, Users.username FROM comments, Users WHERE post_id = :postid AND comments.user_id = Users.ID', array(':postid'=>$postId));
             foreach($comments as $comment) 
             {
-                echo $comment['comment']." ~ ".$comment['username']."<hr />";
+                echo "<div class='comm'>".$comment['comment']." ~ ".$comment['username']."</div>";
             }
         }
     }

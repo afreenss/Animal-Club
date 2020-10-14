@@ -31,20 +31,18 @@
             else
             {
                 echo "<script> alert('Incorrect password ! ');</script>";
+                echo "<script> location.href='http://localhost:8080/Animal-Club/social/login.html'; </script>";
+
             }
         }
         else
         {
             echo "<script> alert('User does not exist ! ');</script>";
+            echo "<script> location.href='http://localhost:8080/Animal-Club/social/login.html'; </script>";
+
         }
     }
-
     ?>
-    <h1>LOG IN </h1>
-    <form name="log" action="login.php" method="post">
-        <input type="text" name="username" value="" placeholder="Username ..."><p />
-        <input type="password" name="password" value="" placeholder="Password ..."><p />
-        <input type="submit" name="login" value="Login">
-    </form>
+    
 </body>
 </html>

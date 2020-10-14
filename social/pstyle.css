@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;900&display=swap');
+body{
+  font-family: 'Roboto', sans-serif;
+  background-color: white;
+  padding: 20px;
+}
+#fbutt
+{
+    background-color: #e6b89c;
+    border-radius: 5px;
+    padding: 10px;
+}
+.posts
+{    
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(50px,300px);  
+    grid-gap: 30px;
+    padding: 5px;  
+}
+.postx
+{
+  font-family: 'Roboto', sans-serif;
+  font-weight:100;
+
+    padding: 30px;
+    background-color: white;
+	  box-shadow: 10px 10px 10px rgb(254, 147, 140, 0.3);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    align-content: start;
+}
+.postx img
+{
+
+    border : transparent;
+    grid-row: 1;
+    grid-column: 1/5;
+    width: 100%;
+    height: 75%;
+    align-self: top;
+}
+.postx p
+{
+  font-family: 'Roboto', sans-serif;
+  font-style: regular;
+  font-weight:400;
+
+  align-self: top;
+    grid-column: 1/5;
+}
+
+.likee
+{
+
+    position: relative;
+    bottom: 20px;
+}
+
+.ptitle
+{
+    text-align: center;
+    margin: 30px;
+    font-size: 20px;
+}
+* {
+	-webkit-transition-property: all;
+	-webkit-transition-duration: .2s;
+  -moz-transition-timing-function: cubic-bezier(100,50,21,6);
+	-moz-transition-property: all;
+  -moz-transition-timing-function: cubic-bezier(100,50,21,6);
+}
+.postprofile
+{
+  padding: 40px;
+  text-align: center;
+  background-color: #ead2ac;
+}
+.postprofile textarea
+{
+  font-size: 20px;
+}
+.navbar{
+  padding-top:30px;
+  text-align:center;
+  font-family: 'Oswald', sans-serif;
+}
+
+h1{
+  color:#fe93ac;
+  font-weight:100;
+}
+
+.btn{
+  color:#999;
+  background: rgba(230, 184, 156, 0.5);
+  padding:10px 20px;
+  font-size:12px;
+  text-decoration:none;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+.btn:hover{
+  border:none;
+  background:rgba(0, 0, 0, 0.4);
+  background:#ead2ac;
+  padding:20px 20px;
+}
+
+.footer{
+  font-size:8px;
+  color:#fff;
+  clear:both;
+  display:block;
+  letter-spacing:5px;
+  border:1px solid #fff;
+  padding:5px;
+  text-decoration:none;
+  width:210px;
+  margin:auto;
+  margin-top:400px;
+}
+

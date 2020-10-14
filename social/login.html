@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="astyle.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet"> 
+    <title>Sign in - Animal Club</title>
+</head>
+<body>
+    <section class="showcase">
+        <div class="video-container">
+            <video src="formvid.mp4" autoplay muted loop></video>
+        </div>
+        <div class="content">
+            <form name="log" action="login.php" method="post">
+                <div class="container">
+                <div class="class1">
+                    
+                    <h1>Sign in</h1>
+                    <div class="userpass">
+                        <div class="tooltip">
+                            <i class="material-icons">pets</i>                        
+                            <span class="tooltiptext">Enter your Animal Club username. </span>
+                        </div>
+                        
+                        <input class="input-field" type="text" placeholder="Username" name="username"><br>
+                    </div>
+                    <br>
+                    <div class="userpass">
+                        <div class="tooltip">
+                            <i class="material-icons">pets</i>                        
+                            <span class="tooltiptext">Enter your password </span>
+                        </div>
+                        
+                        <input class="input-field" type="password" placeholder="Password" name="password"><br>
+                    </div>
+                    
+                    
+                    <br><br><input id="submit" type="submit" name="login" value="Login">
+                </form>
+        </div>
+        <div class="class2">
+            <h2>Aren't a member yet?</h2><br>
+            <a href="http://localhost:8080/Animal-Club/social/signup.html" id="submit" type="submit">Create Account</a>
+            <ul>
+                <br><li> © Animal Club </li>
+                <!--  <li id="l1"><a href="#terms">Terms of use </a> </li>
+                <li>| </li>
+                <li id="l1"><a style="color: #BB501C;" href="#policy">Policy</a> </li>-->
+            </ul>
+        </div>
+    </section>
+</body>
+</html>

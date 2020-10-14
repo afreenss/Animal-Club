@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="pstyle.css">
+
     <title>Profile</title>
 </head>
 <body>
@@ -89,35 +91,43 @@
     }
     
     ?>
+    <div class="navbar">
+    <a href="http://localhost:8080/Animal-Club/social/social.html" class="btn">Go Back</a>
 
-    <h1><?php echo $user;?>'s Profile</h1>
+    </div>
+<div class="ptitle">
+<h1>@<?php echo $user;?></h1>
     <form action="profile.php?username=<?php echo $user; ?>" method="post">
     <?php 
     if($uid!=$fid)
     {
         if($isfollowing == true)
         {
-            echo '<input type="submit" name="unfollow" value="Unfollow ! ">';
+            echo "<input id='fbutt' type='submit' name='unfollow' value='Unfollow ! '>";
         }
         else
         {
-            echo '<input type="submit" name="follow" value="Follow ! ">';
+            echo "<input id='fbutt' type='submit' name='follow' value='Follow ! '>";
         }
     }
     ?>
     </form>
-
+</div>
+    
     <?php
     if(Login::isloggedin()==$uid)
     {
         echo("
+        <div class='postprofile'>
         <form action=profile.php?username=$user method='post' enctype='multipart/form-data'>
-            <textarea name='posttext' cols='30' rows='10'></textarea>
+            <textarea name='posttext' cols='50' rows='10'></textarea>
             <br>
             Upload an image:
-            <input type='file' name='postimg'>
-            <input type='submit' name='post' value='POST'>
+            <input id='fbutt' type='file' name='postimg'>
+            <input id='fbutt' type='submit' name='post' value='POST'>
         </form>
+        </div>
+        <br><br>
         ");
     }
     ?>

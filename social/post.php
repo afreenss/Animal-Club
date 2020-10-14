@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="pstyle.css">
     <title>Document</title>
 </head>
 <body>
@@ -95,12 +96,12 @@
             $posts ="";
             foreach($allposts as $p) 
             {
-                $posts .= "<img src='".$p['postimg']."'><br>".self::linkadd($p['text'])."
-                <form action='profile.php?username=$user&postid=".$p['ID']."' method='post'>
-                <input type= 'submit' name='like' value='Like'>
-                <span>".$p['likes']." Like</span>
-                </form>
-                <hr /></br />
+                $posts .= "<div class='postx'><img src='".$p['postimg']."'><p>".self::linkadd($p['text'])."</p>
+                <form action='profile.php?username=$user&postid=".$p['ID']."' method='post'><br>
+                <div class='likee'>
+                <input type= 'submit' name='like' value='Like'><span>".$p['likes']." Like</span>
+                </div>
+                </form></div>
                 ";
             }
             return $posts ;
